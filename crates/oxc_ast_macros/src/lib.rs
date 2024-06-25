@@ -21,8 +21,9 @@ pub fn visited_node(_args: TokenStream, input: TokenStream) -> TokenStream {
 
 /// Dummy derive macro for a non-existent trait `VisitedNode`.
 ///
-/// Does not generate any code, only purpose is to allow using `#[scope]` attr in the type def.
-#[proc_macro_derive(VisitedNode, attributes(scope))]
+/// Does not generate any code, only purpose is to allow using `#[scope]`, `#[serde]` and `#[tsify]`
+/// attrs in the type def.
+#[proc_macro_derive(VisitedNode, attributes(scope, serde, tsify))]
 pub fn visited_node_derive(_item: TokenStream) -> TokenStream {
     TokenStream::new()
 }
