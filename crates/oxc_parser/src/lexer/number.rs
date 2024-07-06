@@ -89,7 +89,7 @@ fn parse_binary(s: &str) -> f64 {
 /// So we can convert from any octal digit to its value with `c & 7`.
 /// This is produces more compact assembly than `c - b'0'`.
 ///
-/// https://godbolt.org/z/9rYTsMoMM
+/// <https://godbolt.org/z/9rYTsMoMM>
 const fn octal_byte_to_value(c: u8) -> u8 {
     debug_assert!(c >= b'0' && c <= b'7');
     c & 7
@@ -147,7 +147,7 @@ fn parse_octal_slow(s: &str) -> f64 {
 /// This is produces more slightly more assembly than explicitly matching all possibilities,
 /// but only because compiler unrolls the loop.
 ///
-/// https://godbolt.org/z/5fsdv8rGo
+/// <https://godbolt.org/z/5fsdv8rGo>
 const fn hex_byte_to_value(c: u8) -> u8 {
     debug_assert!((c >= b'0' && c <= b'9') || (c >= b'A' && c <= b'F') || (c >= b'a' && c <= b'f'));
     if c < b'A' {
