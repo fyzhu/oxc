@@ -38,6 +38,13 @@ impl<'a> FromIn<'a, String> for crate::String<'a> {
     }
 }
 
+impl<'a> FromIn<'a, String> for &'a str {
+    #[inline(always)]
+    fn from_in(value: String, alloc: &'a Allocator) -> Self {
+        crate::String::from_str_in(value.as_str(), alloc).into_bump_str()
+    }
+}
+
 impl<'a, T> FromIn<'a, T> for Box<'a, T> {
     #[inline(always)]
     fn from_in(value: T, alloc: &'a Allocator) -> Self {
