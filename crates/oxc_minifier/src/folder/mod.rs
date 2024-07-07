@@ -212,12 +212,10 @@ impl<'a> Folder<'a> {
                 let right_number = get_side_free_number_value(right_expr);
 
                 if let Some(NumberValue::Number(num)) = right_number {
-                    let raw = self.ast.new_str(num.to_string().as_str());
-
                     let number_literal_expr = self.ast.expression_numeric_literal(
                         right_expr.span(),
                         num,
-                        raw,
+                        num.to_string(),
                         if num.fract() == 0.0 { NumberBase::Decimal } else { NumberBase::Float },
                     );
 
@@ -231,12 +229,10 @@ impl<'a> Folder<'a> {
                 let left_number = get_side_free_number_value(left_expr);
 
                 if let Some(NumberValue::Number(num)) = left_number {
-                    let raw = self.ast.new_str(num.to_string().as_str());
-
                     let number_literal_expr = self.ast.expression_numeric_literal(
                         left_expr.span(),
                         num,
-                        raw,
+                        num.to_string(),
                         if num.fract() == 0.0 { NumberBase::Decimal } else { NumberBase::Float },
                     );
 
