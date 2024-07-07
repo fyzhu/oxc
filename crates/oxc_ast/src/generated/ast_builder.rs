@@ -311,7 +311,7 @@ impl<'a> AstBuilder<'a> {
     }
 
     #[inline]
-    pub fn expression_super_(self, span: Span) -> Expression<'a> {
+    pub fn expression_super(self, span: Span) -> Expression<'a> {
         Expression::Super(self.alloc(self.super_(span)))
     }
 

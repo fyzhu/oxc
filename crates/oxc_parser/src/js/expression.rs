@@ -582,7 +582,7 @@ impl<'a> ParserImpl<'a> {
             self.error(diagnostics::unexpected_super(span));
         }
 
-        self.ast.expression_super_(span)
+        self.ast.expression_super(span)
     }
 
     /// parse rhs of a member expression, starting from lhs
