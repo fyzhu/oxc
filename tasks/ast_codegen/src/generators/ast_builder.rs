@@ -92,7 +92,12 @@ fn enum_builder_name(enum_name: String, var_name: String) -> Ident {
 }
 
 fn struct_builder_name(struct_: &RStruct) -> Ident {
-    format_ident!("{}", fn_ident_name(struct_.ident().to_string()))
+    static RUST_KEYWORDS: [&str; 1] = ["super"];
+    let mut ident = fn_ident_name(struct_.ident().to_string());
+    if RUST_KEYWORDS.contains(&ident.as_str()) {
+        ident.push('_');
+    }
+    format_ident!("{ident}")
 }
 
 fn generate_builder_fn(ty: &TypeRef, ctx: &CodegenCtx) -> Option<TokenStream> {
